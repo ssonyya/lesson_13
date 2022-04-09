@@ -1,6 +1,6 @@
 #include "math_3d.h"
 
-Vector3f Vector3f::Cross(const Vector3f& v) const
+Vector3f Vector3f::Cross(const Vector3f& v) const //Такая операция возвращает вектор, перпендикулярный плоскости, определяемой исходными векторами
 {
     const float _x = y * v.z - z * v.y;
     const float _y = z * v.x - x * v.z;
@@ -9,7 +9,7 @@ Vector3f Vector3f::Cross(const Vector3f& v) const
     return Vector3f(_x, _y, _z);
 }
 
-Vector3f& Vector3f::Normalize()
+Vector3f& Vector3f::Normalize() //Для генерации матрицы UVN мы должны сделать вектора единичной длины
 {
     const float Length = sqrtf(x * x + y * y + z * z);
 
@@ -62,8 +62,8 @@ void Matrix4f::InitTranslationTransform(float x, float y, float z)
     m[3][0] = 0.0f; m[3][1] = 0.0f; m[3][2] = 0.0f; m[3][3] = 1.0f;
 }
 
-
-void Matrix4f::InitCameraTransform(const Vector3f& Target, const Vector3f& Up)
+//функция генерирует преобразования камеры, которые позднее будут использованы конвейером
+void Matrix4f::InitCameraTransform(const Vector3f& Target, const Vector3f& Up) 
 {
     Vector3f N = Target;
     N.Normalize();

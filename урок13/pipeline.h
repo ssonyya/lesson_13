@@ -45,7 +45,7 @@ public:
         m_persProj.zFar = zFar;
     }
 
-    void SetCamera(const Vector3f& Pos, const Vector3f& Target, const Vector3f& Up)
+    void SetCamera(const Vector3f& Pos, const Vector3f& Target, const Vector3f& Up) //функция для получения значения векторов
     {
         m_camera.Pos = Pos;
         m_camera.Target = Target;
@@ -67,6 +67,7 @@ private:
         float zFar;
     } m_persProj;
 
+    //отсутствует вектор вправо, он может быть подсчитан на ходу используя векторное произведение других векторов
     struct {
         Vector3f Pos;
         Vector3f Target;
